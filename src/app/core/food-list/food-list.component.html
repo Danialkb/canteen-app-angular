@@ -1,0 +1,13 @@
+<div class="menu-wrapper">
+  <div class="food-list">
+
+    <div class="menu-item" *ngFor="let food of foodList">
+        <div class="img-container">
+            <img src={{food.image}} alt="Нет фото"/>
+        </div>
+        <h3 class="link"> {{ food.name }}</h3>
+        <h3>{{ food.price }} тг.</h3>
+        <button class="btn add-cart-btn">В корзину</button>
+    </div>
+  </div>
+</div>
