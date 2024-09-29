@@ -1,0 +1,9 @@
+<div class="form-container">
+  <h1>Подтвердите регистрацию</h1>
+  <form class="form" [formGroup]="confirmationForm" (submit)="submitConfirmationForm()">
+    <label for="code">Код подтверждения:</label>
+    <input class="input" type="text" id="code" formControlName="code" placeholder="Введите код" required>
+
+    <button class="btn" type="submit">Зарегистрироваться</button>
+  </form>
+</div>

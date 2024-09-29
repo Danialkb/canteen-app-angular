@@ -1,1 +1,84 @@
-/* You can add global styles to this file, and also import other style files */
+#root {
+  margin: 0 auto;
+  width: 100%;
+}
+
+h1, h2, h3, p, label {
+  font-family: 'Lato', sans-serif;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+}
+
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form label {
+  width: 100%;
+  text-align: left;
+  font-size: 16px;
+
+}
+
+.form-wrapper {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.submit-btn {
+  height: 45px;
+}
+
+.link {
+  cursor: pointer;
+}
+
+.link:hover {
+  color: #ff7200;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.input {
+  padding: 0 15px;
+  margin: 5px 0 10px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  width: 300px;
+  height: 45px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.input:focus {
+  outline: none;
+  transition: 0.3s ease-in-out;
+  border-color: #ff7200;
+}
+
+.btn {
+  padding: 5px 15px;
+  color: white;
+  background-color: #ff7200;
+  font-size: 14px;
+  border: 1px solid #ff7200;
+  border-radius: 7px;
+  cursor: pointer;
+  width: 100%;
+  height: auto;
+}
+
+.btn:hover {
+  transition: 0.3s ease-in-out;
+  opacity: 0.9;
+}
+

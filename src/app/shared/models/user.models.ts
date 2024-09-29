@@ -9,3 +9,8 @@ export interface ConfirmationCode {
   session_id: string;
   code: string;
 }
+
+export interface TokenPair {
+  access: string;
+  refresh: string;
+}

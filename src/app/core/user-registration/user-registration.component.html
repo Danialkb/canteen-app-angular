@@ -1,1 +1,21 @@
-<p>user-registration works!,lsla</p>
+<div class="form-container">
+  <h1>Регистрация</h1>
+  <form class="form" [formGroup]="registrationForm" (submit)="submitRegistrationForm()">
+    <label for="first_name">Имя:</label>
+    <input class="input" type="text" id="first_name" formControlName="first_name" placeholder="Введите ваше имя"
+           required>
+
+    <label for="last_name">Фамилия:</label>
+    <input class="input" type="text" id="last_name" formControlName="last_name" placeholder="Введите вашу фамилию"
+           required>
+
+    <label for="email">Email:</label>
+    <input class="input" type="email" id="email" formControlName="email" placeholder="Введите ваш email" required>
+
+    <label for="password">Пароль:</label>
+    <input class="input" type="password" id="password" formControlName="password" placeholder="Введите ваш пароль"
+           required>
+
+    <button class="btn" type="submit">Зарегистрироваться</button>
+  </form>
+</div>
