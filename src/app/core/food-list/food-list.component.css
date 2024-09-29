@@ -1,0 +1,41 @@
+.menu-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.food-list {
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  transition: 0.3s;
+  box-sizing: border-box;
+  width: 80%;
+  /*justify-content: space-evenly;*/
+}
+
+.menu-item {
+  padding: 30px;
+  margin: 8.5px;
+  border-color: transparent;
+  border-radius: 5px;
+  box-shadow: 0 0.7rem 3rem rgba(0,0,0,0.07);
+}
+
+
+.img-container{
+  width: 250px;
+  height: 250px;
+}
+
+.img-container img {
+  cursor: pointer;
+  max-width: 250px;
+  height: auto;
+}
+
+.add-cart-btn {
+  height: 40px;
+  text-align: left;
+  width: 100px;
+}
