@@ -1,1 +1,12 @@
-<p>user-auth works!</p>
+<div class="form-container">
+  <h1>Подтвердите регистрацию</h1>
+  <form class="form" [formGroup]="authenticationForm" (submit)="submitAuthenticationForm()">
+    <label for="email">Email:</label>
+    <input class="input" type="text" id="email" formControlName="email" placeholder="Введите ваш email" required>
+
+    <label for="password">Пароль:</label>
+    <input class="input" type="text" id="password" formControlName="password" placeholder="Введите ваш пароль" required>
+
+    <button class="btn" type="submit">Вход</button>
+  </form>
+</div>

@@ -1,37 +1,34 @@
 import {Component} from '@angular/core';
-import {CommonModule} from "@angular/common";
+import {CommonModule} from '@angular/common';
 import {Router, RouterOutlet} from "@angular/router";
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {UserService} from "../../shared/services/user.service";
 
 @Component({
-  selector: 'app-user-registration',
+  selector: 'app-user-confirm-registration',
   standalone: true,
   imports: [CommonModule, RouterOutlet, FormsModule, ReactiveFormsModule],
-  templateUrl: './user-registration.component.html',
-  styleUrls: ['./user-registration.component.css']
+  templateUrl: './user-confirm-registration.component.html',
+  styleUrls: ['./user-confirm-registration.component.css']
 })
-export class UserRegistrationComponent {
-  registrationForm: FormGroup;
+export class UserConfirmRegistrationComponent {
+  confirmationForm: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
     private router: Router,
   ) {
-    this.registrationForm = this.formBuilder.group({
-      first_name: '',
-      last_name: '',
-      email: '',
-      password: '',
+    this.confirmationForm = this.formBuilder.group({
+      code: '',
+      session_id: localStorage.getItem('session_id'),
     });
   }
 
-  submitRegistrationForm() {
-    this.userService.applyForRegistration(this.registrationForm).subscribe(
+  submitConfirmationForm() {
+    this.userService.verifyRegistration(this.confirmationForm).subscribe(
       response => {
-        localStorage.setItem('session_id', response.session_id);
-        this.router.navigate(['/confirmRegistration']);
+        this.router.navigate(['/login']);
       },
       error => {
         if (error.status !== 201) {
