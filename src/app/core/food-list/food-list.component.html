@@ -7,7 +7,7 @@
         </div>
         <h3 class="link"> {{ food.name }}</h3>
         <h3>{{ food.price }} тг.</h3>
-        <button class="btn add-cart-btn">В корзину</button>
+        <button class="btn add-cart-btn" (click)="addToCart(food)">В корзину</button>
     </div>
   </div>
 </div>
