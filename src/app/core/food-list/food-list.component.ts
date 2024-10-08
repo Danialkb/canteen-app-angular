@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {Food} from "../../shared/models/food.models";
 import {FoodService} from "../../shared/services/food.service";
 import {Router} from "@angular/router";
+import {CartService} from "../../shared/services/cart.service";
 
 @Component({
   selector: 'app-food-list',
@@ -17,6 +18,7 @@ export class FoodListComponent {
   constructor(
     private foodService: FoodService,
     private router: Router,
+    private cartService: CartService
   ) {}
 
   ngOnInit() {
@@ -26,4 +28,10 @@ export class FoodListComponent {
       }
     )
   }
+  addToCart(food: Food): void {
+  this.cartService.addToCart(food).subscribe(
+    response => console.log('Added to cart', response),
+    error => console.error('Error adding to cart', error)
+  );
+}
 }

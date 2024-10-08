@@ -1,0 +1,41 @@
+<div class="cart-wrapper">
+  <h2>Корзина</h2>
+
+  <div *ngFor="let order of orders" class="cart-item">
+    <h3 (click)="navigateToFood(order.food.id)">
+      {{ order.food.name }}
+    </h3>
+
+    <div class="food-details">
+      <div class="price">{{ order.food.price * order.amount }} тг.</div>
+    </div>
+
+    {{ order.food.name }} - Quantity:
+    <button
+      class="cart-btn"
+      (click)="changeQuantity(order.id, order.amount - 1)"
+      [disabled]="order.amount <= 1"
+    >
+      -
+    </button>
+    {{ order.amount }}
+    <button
+      (click)="changeQuantity(order.id, order.amount + 1)"
+      class="cart-btn"
+    >
+      +
+    </button>
+
+    <button id="delete-btn" (click)="deleteOrder(order.id)">Delete</button>
+    <br />
+
+    <input
+      type="text"
+      placeholder="Особые пожелания"
+      [(ngModel)]="specialWishes[order.id]"
+    />
+  </div>
+
+  <button class="cart-submit" (click)="submitOrder()">Отправить Заказ</button>
+  <button class="cart-submit" (click)="saveChanges()">Сохранить изменения</button>
+</div>
