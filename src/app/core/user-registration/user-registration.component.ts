@@ -27,6 +27,11 @@ export class UserRegistrationComponent {
     });
   }
 
+  passwordLengthIsCorrect() {
+    let password = this.registrationForm.get('password');
+    return password?.value.length >= 3;
+  }
+
   submitRegistrationForm() {
     this.userService.applyForRegistration(this.registrationForm).subscribe(
       response => {

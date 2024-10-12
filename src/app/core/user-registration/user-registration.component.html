@@ -15,6 +15,11 @@
     <label for="password">Пароль:</label>
     <input class="input" type="password" id="password" formControlName="password" placeholder="Введите ваш пароль"
            required>
+    <ng-container *ngIf="!passwordLengthIsCorrect()">
+      <p class="password-error-msg">
+        Пароль должен содержать минимум 3 символа
+      </p>
+    </ng-container>
 
     <button class="btn" type="submit">Зарегистрироваться</button>
   </form>

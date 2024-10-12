@@ -2,3 +2,8 @@
   padding: 14px;
   font-size: 16px;
 }
+
+.password-error-msg {
+  color: red;
+  margin-top: 0;
+}
