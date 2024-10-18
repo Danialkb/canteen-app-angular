@@ -29,9 +29,9 @@ export class FoodListComponent {
     )
   }
   addToCart(food: Food): void {
-  this.cartService.addToCart(food).subscribe(
-    response => console.log('Added to cart', response),
-    error => console.error('Error adding to cart', error)
-  );
-}
+    this.cartService.addToCart(food).subscribe(
+      response => console.log('Added to cart', response),
+        error => console.error('Error adding to cart', error)
+    );
+  }
 }

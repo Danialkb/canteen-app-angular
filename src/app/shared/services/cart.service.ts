@@ -22,7 +22,7 @@ export class CartService {
       amount: 1,
       special_wishes: ""
     };
-    return this.http.post(this.endpoint, payload);
+    return this.http.post(this.endpoint + "/", payload);
   }
 
   saveChanges(orders: any[]): Observable<Object>[] {

@@ -6,6 +6,10 @@ nav {
   height: 60px;
 }
 
+.navigation-bar {
+  width: 100%;
+}
+
 nav img {
   width: 50px;
 }
@@ -22,6 +26,7 @@ ul {
 ul li {
   display: inline-block;
   padding: 10px;
+  font-size: 20px;
 }
 
 a {
