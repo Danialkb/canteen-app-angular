@@ -1,0 +1,13 @@
+<div class="food-details" *ngIf="food">
+  <div class="box">
+    <div class="food-image">
+      <img [src]="food.image" alt="{{ food.name }}" />
+    </div>
+    <div class="food-info">
+      <h2>{{ food.name }}</h2>
+      <p>{{ food.description }}</p>
+      <h3>{{ food.price }} тг.</h3>
+      <button class="btn add-cart-btn">В корзину</button>
+    </div>
+  </div>
+</div>
