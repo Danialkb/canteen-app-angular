@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {Food} from "../../shared/models/food.models";
 import {FoodService} from "../../shared/services/food.service";
-import {Router} from "@angular/router";
+import {Router, RouterLink, RouterOutlet} from "@angular/router";
 import {CartService} from "../../shared/services/cart.service";
 
 @Component({
   selector: 'app-food-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterOutlet, RouterLink],
   templateUrl: './food-list.component.html',
   styleUrls: ['./food-list.component.css']
 })
