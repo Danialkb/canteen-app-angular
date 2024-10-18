@@ -1,6 +1,10 @@
 #root {
-  margin: 0;
+  margin: 0 auto;
   width: 100%;
+}
+
+body {
+  margin: 0;
 }
 
 h1, h2, h3, p, label, ul, li {
