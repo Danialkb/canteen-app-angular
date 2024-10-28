@@ -14,6 +14,6 @@ export const routes: Routes = [
   {path: 'confirmRegistration', component: UserConfirmRegistrationComponent},
   {path: 'menu', component: FoodListComponent},
   {path: 'cart', component: CartComponent},
-  { path: '',   redirectTo: '/menu', pathMatch: 'full' },
+  {path: '', redirectTo: '/menu', pathMatch: 'full'},
 ]
 
