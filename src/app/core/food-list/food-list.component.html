@@ -1,6 +1,8 @@
 <div class="menu-wrapper">
+  <div class="search-bar-wrapper">
+    <app-food-search-bar (searchEvent)="getFoodList($event)" />
+  </div>
   <div class="food-list">
-
     <div class="menu-item" *ngFor="let food of foodList">
         <div class="img-container">
           <a [routerLink]="['/food', food.id]">

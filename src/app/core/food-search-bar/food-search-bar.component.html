@@ -1,0 +1,6 @@
+<nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+  <input type="text" [(ngModel)]="foodSearchName" nz-input placeholder="input search text" class="search-input" />
+</nz-input-group>
+<ng-template #suffixIconButton>
+  <button (click)="searchFoodByName()" nz-button nzType="primary" nzSearch class="search-btn"><span nz-icon nzType="search"></span></button>
+</ng-template>

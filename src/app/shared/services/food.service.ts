@@ -12,8 +12,9 @@ export class FoodService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getFoodList(): Observable<Food[]> {
-    return this.httpClient.get<Food[]>(`${this.apiUrl}`);
+  getFoodList(queryParams: any = null): Observable<Food[]> {
+    const params = queryParams ? { params: queryParams } : {};
+    return this.httpClient.get<Food[]>(`${this.apiUrl}`, params);
   }
 
   getFoodDetails(id: string): Observable<Food> {

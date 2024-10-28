@@ -1,0 +1,21 @@
+.search-bar-wrapper {
+  width: 100%;
+}
+
+.search-input {
+  border-color: #ff7200;
+  font-size: 14px;
+}
+
+.search-input:hover {
+  border-color: #ff7200;
+}
+
+.search-input:focus {
+  border-color: #ff7200;
+}
+
+.search-btn {
+  background-color: #ff7200;
+  border: none;
+}
