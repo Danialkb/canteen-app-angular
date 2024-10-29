@@ -21,6 +21,11 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              },
               "src/favicon.ico",
               "src/assets"
             ],

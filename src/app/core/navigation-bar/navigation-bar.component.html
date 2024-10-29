@@ -1,18 +1,28 @@
-<nav class="navigation-bar">
-  <a [routerLink]="['menu']">
+<nz-header>
+  <a [routerLink]="['menu']" class="logo">
     <img src="../../../assets/canteen.png">
   </a>
-  <ul>
-    <li>
-      <a [routerLink]="['registration']">Регистрация</a>
+  <ul nz-menu nzMode="horizontal">
+    <li nz-menu-item>
+      <a [routerLink]="['cart']">
+        <i nz-icon nzType="shopping-cart" nzTheme="outline" style="font-size: 25px"></i>
+      </a>
     </li>
-    <li>
-      <a [routerLink]="['login']">Авторизация</a>
-    </li>
-    <li>
-      <a [routerLink]="['cart']">Корзина</a>
-    </li>
+    <li nz-menu-item><a [routerLink]="['registration']">Регистрация</a></li>
+    <li nz-menu-item><a [routerLink]="['login']">Авторизация</a></li>
+<!--    <li>-->
+<!--      <a nz-dropdown [nzDropdownMenu]="menu">-->
+<!--        Hover me-->
+<!--        <span nz-icon nzType="down"></span>-->
+<!--      </a>-->
+<!--      <nz-dropdown-menu #menu="nzDropdownMenu">-->
+<!--        <ul nz-menu nzSelectable>-->
+<!--          <li nz-menu-item>1st menu item</li>-->
+<!--          <li nz-menu-item>2nd menu item</li>-->
+<!--          <li nz-menu-item>3rd menu item</li>-->
+<!--          <li nz-menu-item nzDanger>4th danger item</li>-->
+<!--        </ul>-->
+<!--      </nz-dropdown-menu>-->
+<!--    </li>-->
   </ul>
-
-
-</nav>
+</nz-header>

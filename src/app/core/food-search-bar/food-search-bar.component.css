@@ -4,7 +4,7 @@
 
 .search-input {
   border-color: #ff7200;
-  font-size: 14px;
+  font-size: 20px;
 }
 
 .search-input:hover {
@@ -18,4 +18,5 @@
 .search-btn {
   background-color: #ff7200;
   border: none;
+  height: 41px;
 }
