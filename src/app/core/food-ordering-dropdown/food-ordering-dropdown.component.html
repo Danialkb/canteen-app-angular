@@ -1,0 +1,9 @@
+<label>Сортировать:</label>
+<select [(ngModel)]="selectedOption" (change)="orderFoodList()">
+  <option *ngFor="let option of orderOptions" [value]="option.value" [label]="option.label"></option>
+</select>
+
+<!--<nz-select >-->
+<!--  <nz-option *ngFor="let option of orderOptions" [nzValue]="option.value" [nzLabel]="option.label">-->
+<!--  </nz-option>-->
+<!--</nz-select>-->

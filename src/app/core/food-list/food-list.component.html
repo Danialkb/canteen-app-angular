@@ -1,7 +1,11 @@
 <div class="menu-wrapper">
   <div class="search-bar-wrapper">
-    <app-food-search-bar (searchEvent)="getFoodList($event)" />
+    <app-food-search-bar (searchEvent)="onSearch($event)" />
   </div>
+  <div class="order-selector">
+    <app-food-ordering-dropdown (orderEvent)="onOrder($event)"/>
+  </div>
+
   <div class="food-list">
     <div class="menu-item" *ngFor="let food of foodList">
         <div class="img-container">
@@ -9,8 +13,8 @@
             <img src={{food.image}} alt="Нет фото"/>
           </a>
         </div>
-      <a [routerLink]="['/food', food.id]" class="link">
-        <h3> {{ food.name }}</h3>
+      <a [routerLink]="['/food', food.id]">
+        <h3 class="link"> {{ food.name }}</h3>
       </a>
         <h3>{{ food.price }} тг.</h3>
         <button class="btn add-cart-btn" (click)="addToCart(food)">В корзину</button>
