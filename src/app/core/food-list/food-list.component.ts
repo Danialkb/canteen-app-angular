@@ -5,16 +5,20 @@ import {FoodService} from "../../shared/services/food.service";
 import {Router, RouterLink, RouterOutlet} from "@angular/router";
 import {CartService} from "../../shared/services/cart.service";
 import {FoodSearchBarComponent} from "../food-search-bar/food-search-bar.component";
+import {FoodOrderingDropdownComponent} from "../food-ordering-dropdown/food-ordering-dropdown.component";
+
 
 @Component({
   selector: 'app-food-list',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink, FoodSearchBarComponent],
+  imports: [CommonModule, RouterOutlet, RouterLink, FoodSearchBarComponent, FoodOrderingDropdownComponent],
   templateUrl: './food-list.component.html',
   styleUrls: ['./food-list.component.css']
 })
 export class FoodListComponent {
   foodList: Food[] = [];
+  foodSearchName: string = '';
+  ordering: string = '';
 
   constructor(
     private foodService: FoodService,
@@ -26,13 +30,32 @@ export class FoodListComponent {
     this.getFoodList();
   }
 
-  getFoodList(foodSearchName: string = '') {
-    const queryParams = foodSearchName ? { search: foodSearchName } : null;
+  getFoodList() {
+    let queryParams: any = {}
+
+    if(this.foodSearchName) {
+      queryParams['search'] = this.foodSearchName;
+    }
+
+    if(this.ordering) {
+      queryParams['ordering'] = this.ordering;
+    }
+
     this.foodService.getFoodList(queryParams).subscribe(
       response => {
         this.foodList = response;
       }
     )
+  }
+
+  onSearch(foodSearchName: string) {
+    this.foodSearchName = foodSearchName;
+    this.getFoodList();
+  }
+
+  onOrder(ordering: string) {
+    this.ordering = ordering;
+    this.getFoodList();
   }
 
   addToCart(food: Food): void {

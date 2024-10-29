@@ -16,12 +16,8 @@ import {FormsModule} from "@angular/forms";
 })
 export class FoodSearchBarComponent {
   foodSearchName: string = '';
-  @Output() searchEvent: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor(
-    private foodService: FoodService,
-    private router: Router,
-  ) {}
+  @Output() searchEvent: EventEmitter<string> = new EventEmitter<string>();
 
   searchFoodByName() {
     this.searchEvent.emit(this.foodSearchName);
