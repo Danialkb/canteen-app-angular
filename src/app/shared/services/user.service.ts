@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {FormGroup} from "@angular/forms";
 import {Observable} from "rxjs";
-import {ConfirmationCode, TokenPair} from "../models/user.models";
+import {ConfirmationCode, TokenPair, User} from "../models/user.models";
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +23,14 @@ export class UserService {
 
   createToken(authForm: FormGroup): Observable<TokenPair> {
     return this.httpClient.post<TokenPair>(`${this.apiUrl}/token/`, authForm.getRawValue());
+  }
+
+  getProfileInfo(): Observable<User> {
+    return this.httpClient.get<User>(`${this.apiUrl}/user/`)
+  }
+
+  updateUser(editedUser: User): Observable<User> {
+    return this.httpClient.put<User>(`${this.apiUrl}/update/`, editedUser);
   }
 
 }

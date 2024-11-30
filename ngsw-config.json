@@ -47,6 +47,16 @@
         "maxAge": "10m",
         "timeout": "5s"
       }
+    },
+    {
+      "name": "user-profile",
+      "urls": ["http://localhost:8000/api/v1/user/get_user"],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxSize": 20,
+        "maxAge": "1m",
+        "timeout": "5s"
+      }
     }
   ]
 }

@@ -1,0 +1,15 @@
+<div class="user-page">
+  <h1>Личный кабинет</h1>
+  <div class="user-page-wrapper" *ngIf="user">
+    <div class="user-info">
+      <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+      <h3>{{ user.email }}</h3>
+    </div>
+    <div class="user-edit" *ngIf="editedUser">
+      <input type="text" class="input" [(ngModel)]="editedUser.first_name">
+      <input type="text" class="input" [(ngModel)]="editedUser.last_name">
+      <input type="email" class="input" [(ngModel)]="editedUser.email" value="s,lds">
+      <button type="submit" class="btn" (click)="updateUser()">Обновить</button>
+    </div>
+  </div>
+</div>
