@@ -25,8 +25,12 @@ export class UserService {
     return this.httpClient.post<TokenPair>(`${this.apiUrl}/token/`, authForm.getRawValue());
   }
 
-  getProfileInfo(): Observable<User> {
+  public getProfileInfo(): Observable<User> {
     return this.httpClient.get<User>(`${this.apiUrl}/user/`)
+  }
+
+  public getApiURL(): String{
+    return this.apiUrl;
   }
 
   updateUser(editedUser: User): Observable<User> {

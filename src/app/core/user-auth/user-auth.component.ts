@@ -32,7 +32,7 @@ export class UserAuthComponent {
         localStorage.setItem('refresh_token', response.refresh);
         this.router.navigate(['/']);
       },
-      error => {
+      error => {  
         if (error.status !== 201) {
           console.log(error)
         }
