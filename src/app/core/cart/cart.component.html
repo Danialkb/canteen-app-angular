@@ -1,5 +1,8 @@
 <div class="cart-wrapper">
   <h2>Корзина</h2>
+  <select [(ngModel)]="selectedOrdersViewOption" (change)="onOrdersViewOptionChange()">
+    <option *ngFor="let option of ordersViewOptions" [value]="option.value" [label]="option.label"></option>
+  </select>
 
   <div *ngFor="let order of orders" class="cart-item">
     <h3 (click)="navigateToFood(order.food.id)">
@@ -9,10 +12,10 @@
     <div class="food-details">
       <div class="price">{{ order.food.price * order.amount }} тг.</div>
     </div>
-
     {{ order.food.name }} - Quantity:
     <button
       class="cart-btn"
+      *ngIf="selectedOrdersViewOption == 'my_orders'"
       (click)="changeQuantity(order.id, order.amount - 1)"
       [disabled]="order.amount <= 1"
     >
@@ -20,22 +23,24 @@
     </button>
     {{ order.amount }}
     <button
+      *ngIf="selectedOrdersViewOption == 'my_orders'"
       (click)="changeQuantity(order.id, order.amount + 1)"
       class="cart-btn"
     >
       +
     </button>
 
-    <button id="delete-btn" (click)="deleteOrder(order.id)">Delete</button>
+    <button *ngIf="selectedOrdersViewOption == 'my_orders'" id="delete-btn" (click)="deleteOrder(order.id)">Delete</button>
     <br />
 
     <input
+      disabled = "selectedOrdersViewOption == 'my_orders'"
       type="text"
       placeholder="Особые пожелания"
       [(ngModel)]="specialWishes[order.id]"
     />
   </div>
 
-  <button class="cart-submit" (click)="submitOrder()">Отправить Заказ</button>
-  <button class="cart-submit" (click)="saveChanges()">Сохранить изменения</button>
+  <button *ngIf="selectedOrdersViewOption == 'my_orders'" class="cart-submit" (click)="submitOrder()">Отправить Заказ</button>
+  <button *ngIf="selectedOrdersViewOption == 'my_orders'" class="cart-submit" (click)="saveChanges()">Сохранить изменения</button>
 </div>

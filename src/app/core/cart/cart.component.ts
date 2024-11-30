@@ -15,12 +15,26 @@ import {Food} from "../../shared/models/food.models";
 export class CartComponent implements OnInit {
   orders: any[] = [];
   specialWishes: { [key: number]: string } = {};
+  ordersViewOptions = [
+    { label: 'Заказать сейчас', value: 'my_orders' },
+    { label: 'Отправленные заказы', value: 'get_active_orders' },
+    { label: 'История заказов', value: 'order_history' },
+  ]
+  selectedOrdersViewOption: string = 'my_orders';
 
   constructor(private cartService: CartService, private router: Router) {
   }
 
   ngOnInit(): void {
-    this.cartService.getCart().subscribe((data: any[]) => {
+    this.loadOrders(this.selectedOrdersViewOption)
+  }
+
+  onOrdersViewOptionChange() {
+    this.loadOrders(this.selectedOrdersViewOption);
+  }
+
+  loadOrders(endpointSuffix: string): void {
+    this.cartService.getCart(endpointSuffix).subscribe((data: any[]) => {
       this.orders = data;
     });
   }

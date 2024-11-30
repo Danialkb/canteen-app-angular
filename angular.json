@@ -31,7 +31,9 @@
               "node_modules/ng-zorro-antd/graph/style/index.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "serviceWorker": true,
+            "ngswConfigPath": "ngsw-config.json"
           },
           "configurations": {
             "production": {

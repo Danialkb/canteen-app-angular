@@ -12,8 +12,8 @@ export class CartService {
 
   constructor(private http: HttpClient) {}
 
-  getCart(): Observable<any> {
-    return this.http.get(`${this.endpoint}`+ '/my_orders/');
+  getCart(endpointSuffix: string): Observable<any> {
+    return this.http.get(`${this.endpoint}`+ `/${endpointSuffix}/`);
   }
 
   addToCart(food: Food): Observable<any> {
