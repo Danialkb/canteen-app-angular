@@ -1,67 +1,59 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { UserProfileComponent } from './user-profile.component';
 import { UserService } from '../../shared/services/user.service';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { of } from 'rxjs';
 import { User } from '../../shared/models/user.models';
-import { FormsModule } from '@angular/forms';
 
 describe('UserProfileComponent', () => {
   let component: UserProfileComponent;
   let fixture: ComponentFixture<UserProfileComponent>;
-  let userServiceMock: jasmine.SpyObj<UserService>;
+  let userService: UserService;
 
   beforeEach(async () => {
-    // Create a mock UserService and spy on the getProfileInfo and updateUser methods
-    userServiceMock = jasmine.createSpyObj('UserService', ['getProfileInfo', 'updateUser']);
-
     await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, FormsModule,UserProfileComponent],
-      providers: [{ provide: UserService, useValue: userServiceMock }],
+      imports: [HttpClientTestingModule, UserProfileComponent],
+      providers: [UserService]
     }).compileComponents();
 
     fixture = TestBed.createComponent(UserProfileComponent);
     component = fixture.componentInstance;
+    userService = TestBed.inject(UserService);
+    fixture.detectChanges();
   });
 
-  it('should create the component', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  describe('#loadUser', () => {
-    it('should load user profile info and populate user and editedUser', () => {
-      const mockUser: User = { id: 1, first_name: 'Бакытжан',last_name: "Нурмагамбетов", email: 'nurmagambetovbakytzan@gmail.com' };
-      // Return an Observable from the mock method
-      userServiceMock.getProfileInfo.and.returnValue(of(mockUser));
 
-      component.loadUser();
+  it('should update user profile', () => {
+    const initialUser: User = { id: 1, first_name: 'Bakytzhan',last_name:'Nurmagambetov', email: 'nurmagambetovbakytzan@gmail.com' };
+    const updatedUser: User = { id: 1, first_name: 'NEWBAKYTZHAN',last_name:'Nurmagambetov', email: 'nurmagambetovbakytzan@gmail.com' };
 
-      expect(userServiceMock.getProfileInfo).toHaveBeenCalled();
-      expect(component.user).toEqual(mockUser);
-      expect(component.editedUser).toEqual(mockUser);
+    spyOn(userService, 'getProfileInfo').and.returnValue(of(initialUser));
+    spyOn(userService, 'updateUser').and.returnValue(of(updatedUser));
+
+    component.ngOnInit();
+    component.editedUser!.first_name = 'NEWBAKYTZHAN';
+    component.updateUser();
+
+    expect(userService.updateUser).toHaveBeenCalledWith({
+      id: 1,
+      first_name: 'NEWBAKYTZHAN',
+      last_name:"Nurmagambetov",
+      email:"nurmagambetovbakytzan@gmail.com"
     });
+    expect(component.user).toEqual(updatedUser);
+    expect(component.editedUser).toEqual(updatedUser);
   });
 
-  describe('#updateUser', () => {
-    it('should update the user info with the editedUser data', () => {
-      const mockUpdatedUser: User = { id: 1, first_name: 'Новый',last_name: "НОВЫЙ", email: 'nurmagambetovbakytzan@gmail.com' };
-      component.editedUser ={ id: 1, first_name: 'Новый',last_name: "НОВЫЙ", email: 'nurmagambetovbakytzan@gmail.com' };
-      // Return an Observable from the mock method
-      userServiceMock.updateUser.and.returnValue(of(mockUpdatedUser));
+  it('should not update if editedUser is null', () => {
+    spyOn(userService, 'updateUser');
 
-      component.updateUser();
+    component.editedUser = null;
+    component.updateUser();
 
-      expect(userServiceMock.updateUser).toHaveBeenCalledWith(component.editedUser);
-      expect(component.user).toEqual(mockUpdatedUser);
-      expect(component.editedUser).toEqual(mockUpdatedUser);
-    });
-
-    it('should do nothing if editedUser is null', () => {
-      component.editedUser = null;
-
-      component.updateUser();
-
-      expect(userServiceMock.updateUser).not.toHaveBeenCalled();
-    });
+    expect(userService.updateUser).not.toHaveBeenCalled();
   });
 });

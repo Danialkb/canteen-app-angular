@@ -34,6 +34,7 @@ export class UserRegistrationComponent {
 
   submitRegistrationForm() {
     this.userService.applyForRegistration(this.registrationForm).subscribe(
+     
       response => {
         localStorage.setItem('session_id', response.session_id);
         this.router.navigate(['/confirmRegistration']);

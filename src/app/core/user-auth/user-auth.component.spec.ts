@@ -17,7 +17,7 @@ describe('UserAuthComponent', () => {
     await TestBed.configureTestingModule({
       imports: [ ReactiveFormsModule, HttpClientModule],
       providers: [
-        UserService, // Real UserService is used
+        UserService,
         { provide: Router, useValue: routerMock },
       ]
     }).compileComponents();
@@ -27,9 +27,6 @@ describe('UserAuthComponent', () => {
     fixture.detectChanges();
   });
 
-  afterEach(() => {
-    localStorage.clear();
-  });
 
   it('should create the component', () => {
     expect(component).toBeTruthy();
