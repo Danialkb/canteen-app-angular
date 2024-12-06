@@ -3,8 +3,9 @@
 }
 
 .search-input {
-  border-color: #ff7200;
-  font-size: 14px;
+  /*border-color: #ff7200;*/
+  font-size: 20px;
+  height: 50px;
 }
 
 .search-input:hover {
@@ -13,9 +14,14 @@
 
 .search-input:focus {
   border-color: #ff7200;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .search-btn {
   background-color: #ff7200;
   border: none;
+  height: 50px;
+  width: 50px;
+  --antd-wave-shadow-color: #ff7200;
 }

@@ -10,6 +10,11 @@ select {
   font-size: 14px;
   border: 1px solid lightgrey;
   border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+select:focus {
+  outline-color: #ff7200;
 }
 
 .cart-item {
@@ -23,6 +28,7 @@ select {
 .cart-item h3 {
     cursor: pointer;
     color: #333;
+    font-size: 20px;
 }
 
 .cart-item h3:hover {
@@ -40,6 +46,15 @@ select {
 .price {
     font-weight: bold;
 }
+.btn{
+  width: 200px;
+  height: 45px;
+}
+
+.proceed{
+  display: flex;
+  gap: 40px;
+}
 
 .cart-btn {
     padding: 5px 10px;
@@ -48,6 +63,7 @@ select {
     cursor: pointer;
     margin: 0 5px;
     border: 2px solid white;
+    font-size: 12px;
 }
 
 .cart-btn:disabled {
@@ -59,15 +75,24 @@ select {
     width: 200px;
     height: 60px;
     margin-right: 10px;
+    background-color: #ff7200;
+    border: 1px solid #ccc;
 }
 
-.input-btn {
-    width: 100%;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-top: 10px;
+input{
+  width: 300px;
+  height: 60px;
+  border-radius: 5px;
 }
+
+/*input::placeholder {*/
+/*  color: #888;*/
+/*  font-style: italic;*/
+/*  font-size: 14px;*/
+/*  opacity: 1;*/
+/*  display: flex;*/
+/*  padding-left: 20px;*/
+/*}*/
 
 .cart-btn:hover {
     color: #ff7200;
@@ -75,14 +100,33 @@ select {
     border: 2px solid #ff7200;
 }
 
+.cart-btn:disabled{
+  background-color: #ffe5e5;
+}
+
+.cart-btn:disabled:hover{
+  border: none;
+}
+
 #delete-btn{
     color: red;
     border: 2px solid red;
     border-radius: 5px;
     padding: 5px 10px;
+    margin-bottom: 30px;
+    background-color: #fbfbfb;
 }
 
 #delete-btn:hover{
     color: white;
     background-color: red;
 }
+
+.special-wishes-textarea {
+  width: 300px;
+  height: 60px;
+  resize: both;
+  min-height: 50px;
+  padding: 8px;
+}
+

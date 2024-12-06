@@ -1,12 +1,11 @@
 import {NgModule, isDevMode} from '@angular/core';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
-
 @NgModule({
   declarations: [
   ],
   imports: [
-  
+
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable

@@ -16,7 +16,14 @@ export class AuthInterceptor implements HttpInterceptor {
     console.log('Token from local storage:', accessToken);
 
     if (!accessToken) {
-      return next.handle(request);
+      return next.handle(request).pipe(
+        catchError((error) => {
+          if (error.status === 401) {
+            this.router.navigate(["/login"]);
+          }
+          return throwError(error);
+        })
+      );;
     }
 
     const authorizedRequest = request.clone({

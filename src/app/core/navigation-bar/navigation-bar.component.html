@@ -1,18 +1,9 @@
 <nav class="navigation-bar">
   <a [routerLink]="['menu']">
-    <img src="../../../assets/canteen.png">
+    <img src="../../../assets/canteen.png" alt="Logo">
   </a>
-  <ul>
-    <li>
-      <a [routerLink]="['registration']">Регистрация</a>
-    </li>
-    <li>
-      <a [routerLink]="['login']">Авторизация</a>
-    </li>
-    <li>
-      <a [routerLink]="['cart']">Корзина</a>
-    </li>
-  </ul>
-
-
+  <div class="user-icon">
+    <a [routerLink]="['cart']"><span nz-icon nzType="shopping-cart" nzTheme="outline"></span></a>
+    <a [routerLink]="['userProfile']"><span nz-icon nzType="user" nzTheme="outline"></span></a>
+  </div>
 </nav>
