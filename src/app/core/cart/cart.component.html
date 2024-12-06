@@ -12,7 +12,7 @@
     <div class="food-details">
       <div class="price">{{ order.food.price * order.amount }} тг.</div>
     </div>
-    {{ order.food.name }} - Quantity:
+    Количество:
     <button
       class="cart-btn"
       *ngIf="selectedOrdersViewOption == 'my_orders'"
@@ -33,14 +33,23 @@
     <button *ngIf="selectedOrdersViewOption == 'my_orders'" id="delete-btn" (click)="deleteOrder(order.id)">Delete</button>
     <br />
 
-    <input
-      disabled = "selectedOrdersViewOption == 'my_orders'"
-      type="text"
+    <textarea
+      class="special-wishes-textarea"
+      [disabled]="selectedOrdersViewOption != 'my_orders'"
       placeholder="Особые пожелания"
       [(ngModel)]="specialWishes[order.id]"
-    />
-  </div>
+    ></textarea>
 
-  <button *ngIf="selectedOrdersViewOption == 'my_orders'" class="cart-submit" (click)="submitOrder()">Отправить Заказ</button>
-  <button *ngIf="selectedOrdersViewOption == 'my_orders'" class="cart-submit" (click)="saveChanges()">Сохранить изменения</button>
+<!--    <input-->
+<!--      [disabled] = "selectedOrdersViewOption != 'my_orders'"-->
+<!--      type="text"-->
+<!--      placeholder="Особые пожелания"-->
+<!--      [(ngModel)]="specialWishes[order.id]"-->
+<!--    />-->
+
+  </div>
+  <div class="proceed">
+    <button *ngIf="selectedOrdersViewOption == 'my_orders'" class="btn" (click)="submitOrder()">Отправить Заказ</button>
+    <button *ngIf="selectedOrdersViewOption == 'my_orders'" class="btn" (click)="saveChanges()">Сохранить изменения</button>
+  </div>
 </div>

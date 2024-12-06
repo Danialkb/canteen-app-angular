@@ -7,7 +7,7 @@
       <h2>{{ food.name }}</h2>
       <p>{{ food.description }}</p>
       <h3>{{ food.price }} тг.</h3>
-      <button class="btn add-cart-btn">В корзину</button>
+      <button class="btn add-cart-btn" (click)="addToCart(food)">В корзину</button>
     </div>
   </div>
 </div>

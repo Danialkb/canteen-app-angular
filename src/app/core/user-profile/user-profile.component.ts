@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import {User} from "../../shared/models/user.models";
 import {UserService} from "../../shared/services/user.service";
 import {FormsModule} from "@angular/forms";
+import {Router} from "@angular/router";
+import {catchError, of} from "rxjs";
 
 @Component({
   selector: 'app-user-profile',
@@ -15,7 +17,7 @@ export class UserProfileComponent {
   user: User | null = null;
   editedUser: User | null = null;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
   }
 
   ngOnInit() {
@@ -23,10 +25,19 @@ export class UserProfileComponent {
   }
 
   loadUser() {
-    this.userService.getProfileInfo().subscribe((user) => {
-      this.user = user;
-      this.editedUser = Object.assign({}, user);
-    })
+    this.userService.getProfileInfo().pipe(
+      catchError((error) => {
+        if (error.status === 401) {
+          this.router.navigate(['/login']);
+        }
+        return of(null);
+      })
+    ).subscribe((user) => {
+      if (user) {
+        this.user = user;
+        this.editedUser = Object.assign({}, user);
+      }
+    });
   }
   updateUser() {
     if (!this.editedUser) return;

@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import {CommonModule} from "@angular/common";
-import {Router, RouterOutlet} from "@angular/router";
+import {Router, RouterLink, RouterOutlet} from "@angular/router";
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {UserService} from "../../shared/services/user.service";
 
 @Component({
   selector: 'app-user-auth',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, RouterOutlet, FormsModule, ReactiveFormsModule, RouterLink],
   templateUrl: './user-auth.component.html',
   styleUrls: ['./user-auth.component.css']
 })
@@ -32,7 +32,7 @@ export class UserAuthComponent {
         localStorage.setItem('refresh_token', response.refresh);
         this.router.navigate(['/']);
       },
-      error => {  
+      error => {
         if (error.status !== 201) {
           console.log(error)
         }
